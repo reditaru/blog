@@ -11,6 +11,11 @@ export default function(sequelize,DataTypes){
         },
         name:DataTypes.STRING
     },{
+        defaultScope: {
+            attributes: {
+                exclude: ['createdAt','updatedAt','deletedAt']
+            }
+        },
         paranoid: true
     })
     Category.associate = function (models) {

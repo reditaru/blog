@@ -7,6 +7,11 @@ export default function(sequelize,DataTypes){
         icon:DataTypes.STRING,
         github:DataTypes.STRING
     },{
+        defaultScope: {
+            attributes: {
+                exclude: ['createdAt','updatedAt','deletedAt']
+            }
+        },
         timestamps:false
     })
     return Config;

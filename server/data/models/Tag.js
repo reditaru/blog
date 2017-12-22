@@ -11,10 +11,15 @@ export default function(sequelize,DataTypes){
         },
         name:DataTypes.STRING
     },{
+        defaultScope: {
+            attributes: {
+                exclude: ['createdAt','updatedAt','deletedAt']
+            }
+        },
         paranoid: true
     })
     Tag.associate = function (models) {
-        Tag.belongsToMany(models.article,{as:'articles',through:'article_tag',foreignKey:'tagId',otherKey:'articleId'})
+        Tag.belongsToMany(models.article,{as:'articles',through:'article_tag',foreignKey:'tagId',otherKey:'articleId',timestamps: false})
     }
     return Tag;
 }

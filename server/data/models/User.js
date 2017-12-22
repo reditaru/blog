@@ -18,7 +18,19 @@ export default function(sequelize,DataTypes){
         avatar:DataTypes.STRING,
         email:DataTypes.STRING
     },{
-        paranoid: true
+        defaultScope: {
+            attributes: {
+                exclude: ['createdAt','updatedAt','deletedAt','password']
+            }
+        },
+        paranoid: true,
+        scopes:{
+            valid:{
+                attributes: {
+                    include: ['password']
+                }
+            }
+        }
     })
     User.associate = function (models) {
         User.hasMany(models.article,{as:'articles',foreignKey:'userId'})

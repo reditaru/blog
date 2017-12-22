@@ -3,7 +3,6 @@
  */
 import Koa  from 'koa'
 import views from'koa-views'
-import bodyParser from 'koa-body'
 import serve from 'koa-static'
 import mount from 'koa-mount'
 import root from './controller/root'
@@ -15,15 +14,15 @@ app.use(async (ctx, next) => {
     try {
         await next();
     } catch (err) {
-        ctx.status = err.status || err.code;
+        console.log(err)
         ctx.body = {
             success: false,
+            code:err.status,
             message: err.message,
         };
     }
 });
 app.use(logger())
-app.use(bodyParser())
 app.use(views('views',{
 }))
 app.use(mount('/static',serve('../static/')))

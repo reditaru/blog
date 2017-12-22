@@ -29,7 +29,8 @@ if(config.env.current==='dev')
     sequelize.sync({force:true}).then(()=> {
         Promise.all([db.user.create({username: 'admin',password:'admin',name:'admin',avatar: './static/image/avatar.jpg',email:'example@example.com'}),
                     db.category.create({name: 'testCategory'}),
-                    db.tag.create({name: 'testTag'})]).
+                    db.tag.create({name: 'testTag'}),
+                    db.tag.create({name:'testTag2'})]).
         then((data)=>{
             db.article.create({
                 title:'simple article',summary:'This is a simple test article.',content:'This is a simple test article.'

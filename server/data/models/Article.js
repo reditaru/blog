@@ -21,11 +21,23 @@ export default function(sequelize,DataTypes){
             defaultValue: 0
         }
     },{
-        paranoid: true
+        defaultScope: {
+            attributes: {
+                exclude: ['content','deletedAt']
+            }
+        },
+        paranoid: true,
+        scopes:{
+            content:{
+                attributes:{
+                    include:['content']
+                }
+            }
+        }
     })
     Article.associate = function (models) {
         Article.belongsTo(models.category,{as:'category',foreignKey:'categoryId'})
-        Article.belongsToMany(models.tag,{as:'tags',through:'article_tag',foreignKey:'articleId',otherKey:'tagId'})
+        Article.belongsToMany(models.tag,{as:'tags',through:'article_tag',foreignKey:'articleId',otherKey:'tagId', timestamps: false})
         Article.belongsTo(models.user,{as:'author',foreignKey:'userId'})
     }
     return Article;
