@@ -19,7 +19,7 @@ export default function(sequelize,DataTypes){
         paranoid: true
     })
     Tag.associate = function (models) {
-        Tag.belongsToMany(models.article,{as:'articles',through:'article_tag',foreignKey:'tagId',otherKey:'articleId',timestamps: false,onDelete: 'set null'})
+        Tag.belongsToMany(models.article,{as:'articles',through:'article_tag',foreignKey:'tagId',otherKey:'articleId',timestamps: false})
     }
     return Tag;
 }

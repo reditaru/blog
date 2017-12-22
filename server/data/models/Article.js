@@ -37,7 +37,7 @@ export default function(sequelize,DataTypes){
     })
     Article.associate = function (models) {
         Article.belongsTo(models.category,{as:'category',foreignKey:'categoryId'})
-        Article.belongsToMany(models.tag,{as:'tags',through:'article_tag',foreignKey:'articleId',otherKey:'tagId', timestamps: false,onDelete: 'set null'})
+        Article.belongsToMany(models.tag,{as:'tags',through:'article_tag',foreignKey:'articleId',otherKey:'tagId', timestamps: false})
         Article.belongsTo(models.user,{as:'author',foreignKey:'userId'})
     }
     return Article;
