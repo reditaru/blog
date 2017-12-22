@@ -10,7 +10,7 @@ export const getConfig = async()=>{
 }
 export const updateConfig = async(info)=>{
     let config =  await db.config.findById(1)
-    Toolkit.assertNotNull(tag,'The request tag is not exist!')
+    Toolkit.assertNotNull(config,'The request config is not exist!')
     let result = await db.sequelize.transaction(
         async(t)=>{
             config =
@@ -19,6 +19,9 @@ export const updateConfig = async(info)=>{
                     github:info.github
                 },{transaction:t});
             return config;
+        })
+        .catch((err)=>{
+            throw new ServerError(`update fail! Error:${err.name}`,ServerError.DATA_TRANSACTION_FAIL)
         })
     return result.toJSON()
 }

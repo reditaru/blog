@@ -31,6 +31,7 @@ export const createCategory = async(name)=>{
         }).catch((err)=>{
         throw new ServerError(`create fail! Error:${err.name}`,ServerError.DATA_TRANSACTION_FAIL)
     })
+
     return category.toJSON()
 }
 export const updateCategory = async (id,name)=>{
@@ -44,5 +45,22 @@ export const updateCategory = async (id,name)=>{
                 },{transaction:t});
             return category;
         })
+        .catch((err)=>{
+            throw new ServerError(`update fail! Error:${err.name}`,ServerError.DATA_TRANSACTION_FAIL)
+        })
     return result.toJSON()
+}
+export const deleteCategory = async(id)=>{
+    let category =  await db.category.findById(id)
+    Toolkit.assertNotNull(category,'The request category is not exist!')
+    let result = await db.sequelize.transaction(
+        async(t)=>{
+            category =
+                await category.destroy({transaction:t});
+            return category;
+        })
+        .catch((err)=>{
+            throw new ServerError(`delete fail! Error:${err.name}`,ServerError.DATA_TRANSACTION_FAIL)
+        })
+    return result.toJSON();
 }

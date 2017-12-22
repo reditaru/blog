@@ -41,4 +41,8 @@ article.get('/articles',async(ctx)=>{
         let data = await articleService.getArticlesByCategory(ctx.params.id)
         ctx.body = Toolkit.assemblyResponseBody(data);
     })
+    .delete('/article/:id',async(ctx)=>{
+        let data = await articleService.deleteArticle(ctx.params.id)
+        ctx.body = Toolkit.assemblyResponseBody(data);
+    })
 export default article;

@@ -28,4 +28,8 @@ category.get('/categories',async(ctx)=>{
         let data = await categoryService.updateCategory(ctx.params.id,ctx.request.body.name);
         ctx.body = Toolkit.assemblyResponseBody(data);
     })
+    .delete('/category/:id',async(ctx)=>{
+        let data = await categoryService.deleteCategory(ctx.params.id)
+        ctx.body = Toolkit.assemblyResponseBody(data);
+    })
 export default category;

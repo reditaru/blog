@@ -20,7 +20,7 @@ export const getArticlesByTagId = async(tagId)=>{
         include:[{model:db.article,as:'articles',through:{attributes:[]},include:[{model:db.category,as:'category'},{model:db.user,as:'author'}], order: [['createdAt', 'DESC']]}]
     })
     Toolkit.assertNotNull(tag,'The request tag is not exist!')
-    return tag.toJSON();
+    return tag;
 }
 export const getArticlesByCategory = async (categoryId)=>{
     let category = await db.category.findById(categoryId,{
@@ -56,8 +56,15 @@ export const createArticle = async (info)=>{
              if(info.tags && info.tags.length)
                  await article.addTags(info.tags,{transaction:t});
              return article;
-         }).catch((err)=>{
-            throw new ServerError(`create fail! Error:${err.name}`,ServerError.DATA_TRANSACTION_FAIL)
+         }).then(async(article)=>
+             {return await db.article.findById(article.id,{
+                 include:[{model:db.category,as:'category'},
+                     {model:db.tag,as:'tags',through:{attributes:[]}},
+                     {model:db.user,as:'author'}
+                 ]
+             })})
+         .catch((err)=>{
+             throw new ServerError(`create fail! Error:${err.name}`,ServerError.DATA_TRANSACTION_FAIL)
          })
     return article.toJSON()
 }
@@ -79,9 +86,32 @@ export const updateArticle = async(id,info)=>{
                     categoryId:info.category,
                     userId:info.author
                 },{transaction:t});
-            if(info.tags && info.tags.length)
-                article = await article.setTags(info.tags,{transaction:t});
+            if(info.tags)
+                await article.setTags(info.tags,{transaction:t});
+            return article;
+        }).then(async()=>
+            {return await db.article.findById(id,{
+                include:[{model:db.category,as:'category'},
+                    {model:db.tag,as:'tags',through:{attributes:[]}},
+                    {model:db.user,as:'author'}
+                ]
+            })})
+        .catch((err)=>{
+            throw new ServerError(`update fail! Error:${err.name}`,ServerError.DATA_TRANSACTION_FAIL)
+        })
+    return result.toJSON();
+}
+export const deleteArticle = async(id)=>{
+    let article =  await db.article.findById(id)
+    Toolkit.assertNotNull(article,'The request article is not exist!')
+    let result = await db.sequelize.transaction(
+        async(t)=>{
+            article =
+                await article.destroy({transaction:t});
             return article;
         })
-    return result.toJSON()
-};
+        .catch((err)=>{
+            throw new ServerError(`delete fail! Error:${err.name}`,ServerError.DATA_TRANSACTION_FAIL)
+        })
+    return result.toJSON();
+}

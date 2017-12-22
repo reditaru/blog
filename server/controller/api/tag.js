@@ -24,4 +24,8 @@ tag.get('/tags',async(ctx)=>{
         let data = await tagService.updateTag(ctx.params.id,ctx.request.body.name);
         ctx.body = Toolkit.assemblyResponseBody(data);
     })
+    .delete('/tag/:id',async(ctx)=>{
+        let data = await tagService.deleteTag(ctx.params.id)
+        ctx.body = Toolkit.assemblyResponseBody(data);
+    })
 export default tag;

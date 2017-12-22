@@ -33,5 +33,22 @@ export const updateTag = async(id,name)=>{
                 },{transaction:t});
             return tag;
         })
+        .catch((err)=>{
+            throw new ServerError(`update fail! Error:${err.name}`,ServerError.DATA_TRANSACTION_FAIL)
+        })
     return result.toJSON()
+}
+export const deleteTag = async(id)=>{
+    let tag =  await db.tag.findById(id)
+    Toolkit.assertNotNull(tag,'The request tag is not exist!')
+    let result = await db.sequelize.transaction(
+        async(t)=>{
+            tag =
+                await tag.destroy({transaction:t});
+            return tag;
+        })
+        .catch((err)=>{
+            throw new ServerError(`delete fail! Error:${err.name}`,ServerError.DATA_TRANSACTION_FAIL)
+        })
+    return result.toJSON();
 }
