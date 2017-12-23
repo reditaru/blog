@@ -1,0 +1,86 @@
+doctype html
+html
+    head(lang="zn")
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0")
+        meta(name="description" content="这是Reditaru的博客")
+        meta(name="keywords" content="博客,技术,前端,后端")
+        block title
+            title Reditaru's blog
+        link(rel="stylesheet" type="text/css" href="../../semantic/dist/semantic.min.css")
+        link(rel="stylesheet" type="text/css" href="../../static/css/main.css")
+    body
+        div.ui.two.column.grid.stackable
+            div.four.wide.column.middle.aligned
+                div.ui.grid.mobile.only.nav-collapse
+                    div.ui.menu.inverted
+                        a.menu.item
+                            i.sidebar.icon
+                div.ui.centered.nav-menu.mobile.only.grid.collapse-menu
+                    div.links
+                        div.ui.list
+                            div.ui.divider.fitted
+                            div.item
+                                a(href="/articles")
+                                    h3 Archive
+                            div.ui.divider.fitted
+                            div.item
+                                a(href="/categories")
+                                    h3 Category
+                            div.ui.divider.fitted
+                            div.item
+                                a(href="/tags")
+                                    h3 Tag
+                    div.social
+                        div.ui.horizontal.list
+                            div.item
+                                a(href="https://weibo.com/reditaru" title="My Weibo")
+                                    i.ui.grey.weibo.icon.large
+                            div.item
+                                a(href="https://github.com/reditaru" title="My Github")
+                                    i.ui.grey.github.icon.large
+                            div.item
+                                a(href="https://twitter.com/reditaru1997" title="My Twitter")
+                                    i.ui.grey.twitter.icon.large
+                            div.item
+                                a(href="mailto:reditaru1997@gmail.com" title="Mail Me")
+                                    i.ui.grey.mail.icon.large
+                div.ui.centered.nav
+                    a(href="/" title="link to Steins Kurisu's homepage")
+                        img.ui.tiny.circular.image.centered(src="../../static/img/avatar.png")
+                    h1.ui.header.centered
+                        a(href="/" title="link to Steins Kurisu's homepage") Steins Kurisu
+                    div.ui.divider.inverted.horizontal X
+                    div.ui.sub.header.centered.grey Bad student in NJU, major in Software Engineer
+                    div.ui.centered.nav-menu.computer.only.grid
+                        div.links
+                            div.ui.horizontal.list
+                                div.item
+                                    a(href="/articles")
+                                        h3 Archive
+                                div.item
+                                    a(href="/categories")
+                                        h3 Category
+                                div.item
+                                    a(href="/tags")
+                                        h3 Tag
+                        div.social
+                            div.ui.horizontal.list
+                                div.item
+                                    a(href="https://weibo.com/reditaru" title="My Weibo")
+                                        i.ui.grey.weibo.icon.large
+                                div.item
+                                    a(href="https://github.com/reditaru" title="My Github")
+                                        i.ui.grey.github.icon.large
+                                div.item
+                                    a(href="https://twitter.com/reditaru1997" title="My Twitter")
+                                        i.ui.grey.twitter.icon.large
+                                div.item
+                                    a(href="mailto:reditaru1997@gmail.com" title="Mail Me")
+                                        i.ui.grey.mail.icon.large
+            div.twelve.wide.column.content
+                div(style="height:2000px")
+                    block content
+        script(src="../../static/js/jquery.min.js")
+        script(src="../../semantic/dist/semantic.min.js")
+        script(src="../../static/js/main.js")

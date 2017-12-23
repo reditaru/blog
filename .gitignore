@@ -59,3 +59,13 @@ typings/
 
 # database file
 *.db
+
+# semantic ui
+semantic/src/
+semantic/tasks/
+semantic/gulpfile.js
+semantic.json
+semantic/dist/components/
+semantic/dist/themes/
+#idea
+.idea/

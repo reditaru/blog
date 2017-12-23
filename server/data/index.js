@@ -34,7 +34,7 @@ if(config.env.current==='dev')
         then((data)=>{
             db.article.create({
                 title:'simple article',summary:'This is a simple test article.',content:'This is a simple test article.'
-            }).then((article)=>{
+            }).then(async(article)=>{
                 data[0].addArticle(article);
                 data[1].addArticle(article);
                 data[2].addArticle(article);

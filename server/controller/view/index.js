@@ -8,7 +8,11 @@ import * as categoryService from '../../service/category'
 let view = new Router ();
 view.get('/',async(ctx)=>{
     let data = await articleService.getArticles()
-    ctx.body = data;
+    await ctx.render('index',data)
+    })
+    .get('/articles',async(ctx)=>{
+        let data = await articleService.getArticles()
+        ctx.body = data;
     })
     .get('/article/:id',async(ctx)=>{
         let data = await articleService.getArticleById(ctx.params.id)

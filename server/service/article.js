@@ -57,7 +57,8 @@ export const createArticle = async (info)=>{
                  await article.addTags(info.tags,{transaction:t});
              return article;
          }).then(async(article)=>
-             {return await db.article.findById(article.id,{
+             {
+                 return await db.article.findById(article.id,{
                  include:[{model:db.category,as:'category'},
                      {model:db.tag,as:'tags',through:{attributes:[]}},
                      {model:db.user,as:'author'}
@@ -69,12 +70,7 @@ export const createArticle = async (info)=>{
     return article.toJSON()
 }
 export const updateArticle = async(id,info)=>{
-    let article =  await db.article.findById(id,{
-        include:[{model:db.category,as:'category'},
-            {model:db.tag,as:'tags',through:{attributes:[]}},
-            {model:db.user,as:'author'}
-        ]
-    })
+    let article =  await db.article.findById(id)
     Toolkit.assertNotNull(article,'The request article is not exist!')
     let result = await db.sequelize.transaction(
         async(t)=>{

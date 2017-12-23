@@ -23,8 +23,10 @@ app.use(async (ctx, next) => {
     }
 });
 app.use(logger())
-app.use(views('views',{
+app.use(views(__dirname+'/views',{
+    extension:'jade'
 }))
-app.use(mount('/static',serve('../static/')))
+app.use(mount('/static',serve('static/')))
+app.use(mount('/semantic',serve('semantic/')))
 app.use(root.middleware());
 app.listen(3000)
