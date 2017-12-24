@@ -1,0 +1,71 @@
+body{
+    background: url("../../static/img/background.jpg") no-repeat;
+    background-size: cover;
+}
+.ui.grid {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+@media screen and (max-width: 768px){
+    .nav{
+        margin-top: 10%;
+    }
+}
+@media screen and (min-width: 768px){
+    .content{
+        white-space: nowrap;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+}
+.nav a,
+.nav h1.ui.header,.nav h2.ui.header{
+    color:white;
+}
+.content{
+    background-color: white;
+}
+.ui.nav-menu{
+    margin-top: 6%;
+    text-align: center;
+}
+.ui.nav-menu,.ui.nav-menu div{
+    text-align: center;
+}
+.ui.nav-menu>div{
+    width: 100%;
+}
+.social,.links{
+    margin-top: 5%;
+}
+.links .item a{
+    border: 1rem #aaaaaa;
+    border-radius: 50%;
+    padding: 10px 20px;
+}
+.links .item a h3{
+    color: #aaaaaa;
+}
+.nav-collapse .menu{
+    width: 100%;
+}
+.ui.nav-menu.collapse-menu{
+    background-color: #1b1c1d;
+    margin-top: 0;
+}
+.collapse-menu .social{
+    margin-bottom: 5%;
+}
+.collapse-menu .links{
+    margin-top: 0%;
+}
+.nav-collapse .menu {
+    padding: 0;
+}
+.footer{
+    text-align: center;
+}
+.footer>span{
+    display: block;
+}

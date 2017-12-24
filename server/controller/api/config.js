@@ -4,7 +4,7 @@
 import Router from 'koa-joi-router'
 import * as configService from '../../service/config'
 import * as Toolkit from '../../util/Toolkit'
-import * as Cache from '../../util/cache'
+import * as Cache from '../../util/Cache'
 let config = new Router();
 const Joi = Router .Joi;
 const configValiate = {

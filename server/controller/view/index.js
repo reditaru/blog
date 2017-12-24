@@ -6,7 +6,7 @@ import * as articleService from '../../service/article'
 import * as tagService from '../../service/tag'
 import * as categoryService from '../../service/category'
 import * as configService from '../../service/config'
-import * as Cache from '../../util/cache'
+import * as Cache from '../../util/Cache'
 import markdown from 'marked'
 let view = new Router ();
 view.get('/',async(ctx)=>{
