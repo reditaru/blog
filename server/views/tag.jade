@@ -1,0 +1,8 @@
+extends ./layout.jade
+include ./includes/article_list
+block title
+    title= 'Reditaru - Tag '+tag.name+' -'
+
+block content
+    h1.ui.header= '标签  '+ tag.name
+    mixin article_list(tag.articles)

@@ -1,0 +1,14 @@
+mixin article_list(articles)
+    div.articles
+        each article in articles
+            div.item
+                a(href="/article/" + article.id)
+                    h1.ui.header= article.title
+                div.ui.divider.fitted
+                div.tags
+                    each tag in article.tags
+                        a.ui.label(href="/tag/" + tag.id)= tag.name
+                p.description= article.summary
+                span.info=  article.createdAt.toDateString() + " 于 "
+                a(href="/category/" + article.category.id)=article.category.name
+                span.info= "|  "+article.readCount + "  Click,  "+article.commentCount + "  Comment."

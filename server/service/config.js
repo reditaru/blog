@@ -16,7 +16,13 @@ export const updateConfig = async(info)=>{
             config =
                 await config.updateAttributes({
                     icon:info.icon,
-                    github:info.github
+                    github:info.github,
+                    avatar:info.avatar,
+                    twitter:info.twitter,
+                    weibo:info.weibo,
+                    mail:info.mail,
+                    header:info.header,
+                    subHeader:info.subHeader
                 },{transaction:t});
             return config;
         })

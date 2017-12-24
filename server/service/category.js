@@ -13,7 +13,7 @@ export const getCategoriesAndArticles = async()=>{
     let data =  await db.category.findAll({
         include:[{model:db.article,as:'articles',include:[
             {model:db.tag,as:'tags',through:{attributes:[]}},
-            {model:db.user,as:'author'}],
+            {model:db.user,as:'author'},{model:db.category,as:'category'}],
             order: [['createdAt', 'DESC']]}
         ]
     });

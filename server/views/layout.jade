@@ -8,7 +8,9 @@ html
         block title
             title Reditaru's blog
         link(rel="stylesheet" type="text/css" href="../../semantic/dist/semantic.min.css")
+        link(rel="stylesheet" type="text/css" href="../../static/css/layout.css")
         link(rel="stylesheet" type="text/css" href="../../static/css/main.css")
+        block css
     body
         div.ui.two.column.grid.stackable
             div.four.wide.column.middle.aligned
@@ -34,24 +36,24 @@ html
                     div.social
                         div.ui.horizontal.list
                             div.item
-                                a(href="https://weibo.com/reditaru" title="My Weibo")
+                                a(href=config.weibo title="My Weibo")
                                     i.ui.grey.weibo.icon.large
                             div.item
-                                a(href="https://github.com/reditaru" title="My Github")
+                                a(href=config.github title="My Github")
                                     i.ui.grey.github.icon.large
                             div.item
-                                a(href="https://twitter.com/reditaru1997" title="My Twitter")
+                                a(href=config.twitter title="My Twitter")
                                     i.ui.grey.twitter.icon.large
                             div.item
-                                a(href="mailto:reditaru1997@gmail.com" title="Mail Me")
+                                a(href='mailto:'+ config.mail title="Mail Me")
                                     i.ui.grey.mail.icon.large
                 div.ui.centered.nav
                     a(href="/" title="link to Steins Kurisu's homepage")
-                        img.ui.tiny.circular.image.centered(src="../../static/img/avatar.png")
+                        img.ui.tiny.circular.image.centered(src=config.avatar)
                     h1.ui.header.centered
-                        a(href="/" title="link to Steins Kurisu's homepage") Steins Kurisu
+                        a(href="/" title="link to Steins Kurisu's homepage")=config.header
                     div.ui.divider.inverted.horizontal X
-                    div.ui.sub.header.centered.grey Bad student in NJU, major in Software Engineer
+                    div.ui.sub.header.centered.grey=config.subHeader
                     div.ui.centered.nav-menu.computer.only.grid
                         div.links
                             div.ui.horizontal.list
@@ -67,20 +69,32 @@ html
                         div.social
                             div.ui.horizontal.list
                                 div.item
-                                    a(href="https://weibo.com/reditaru" title="My Weibo")
+                                    a(href=config.weibo title="My Weibo")
                                         i.ui.grey.weibo.icon.large
                                 div.item
-                                    a(href="https://github.com/reditaru" title="My Github")
+                                    a(href=config.github title="My Github")
                                         i.ui.grey.github.icon.large
                                 div.item
-                                    a(href="https://twitter.com/reditaru1997" title="My Twitter")
+                                    a(href=config.twitter title="My Twitter")
                                         i.ui.grey.twitter.icon.large
                                 div.item
-                                    a(href="mailto:reditaru1997@gmail.com" title="Mail Me")
+                                    a(href="mailto:"+config.mail title="Mail Me")
                                         i.ui.grey.mail.icon.large
             div.twelve.wide.column.content
-                div(style="height:2000px")
+                div.ui.container
                     block content
+                    div.ui.divider
+                    div.footer
+                        span 本站采用
+                            a(href="http://creativecommons.org/licenses/by-nc-sa/4.0/") 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议
+                        span © 2016 - 2018 由
+                            a(href="https://reditaru.com") @Reditaru
+                            span 创建
+                        span Powered By
+                            a(href="https://github.com/koajs/koa")  Koa
+                            span And
+                                a(href="https://semantic-ui.com/")  Semantic UI
         script(src="../../static/js/jquery.min.js")
         script(src="../../semantic/dist/semantic.min.js")
         script(src="../../static/js/main.js")
+        block script

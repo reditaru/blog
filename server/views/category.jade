@@ -1,0 +1,8 @@
+extends ./layout.jade
+include ./includes/article_list
+block title
+    title= 'Reditaru - Category '+category.name+' -'
+
+block content
+    h1.ui.header= '目录  '+ category.name
+    mixin article_list(category.articles)

@@ -5,7 +5,13 @@
 export default function(sequelize,DataTypes){
     let Config = sequelize.define('config',{
         icon:DataTypes.STRING,
-        github:DataTypes.STRING
+        github:DataTypes.STRING,
+        weibo:DataTypes.STRING,
+        twitter:DataTypes.STRING,
+        mail:DataTypes.STRING,
+        avatar:DataTypes.STRING,
+        header:DataTypes.STRING,
+        subHeader:DataTypes.STRING
     },{
         defaultScope: {
             attributes: {

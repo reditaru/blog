@@ -1,0 +1,23 @@
+extends ./layout.jade
+
+block title
+    title= "Reditaru  -  " + article.title
+
+block content
+    div.article
+        div.extra
+            span.info=  article.createdAt.toDateString() + " 于 "
+            a(href="/category/" + article.category.id)=article.category.name
+            span.info= "|  "+article.readCount + "  Click,  "+article.commentCount + "  Comment."
+        h1.ui.header= article.title
+        div.ui.divider
+        div.tags
+            a.ui.image.teal.label(href="mailto:"+article.author.email)
+                img(src=article.author.avatar)
+                | #{article.author.name}
+            each tag in article.tags
+                a.ui.label(href="/tag/" + tag.id)= tag.name
+        div.article-content
+            != markdown(article.content)
+
+

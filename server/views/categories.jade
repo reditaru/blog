@@ -1,0 +1,12 @@
+extends ./layout.jade
+include ./includes/article_list
+block title
+    title Reditaru Category
+
+block content
+    h1.ui.header 目录
+    - var colors = ['red','orange','yellow','olive','green','teal','blue','violet','purple','pink','brown','grey','black'];
+    each category in categories
+        - var color = colors[category.id % colors.length]
+        a.ui.big.tag.label(class=color href="/category/"+category.id)=category.name
+        mixin article_list(category.articles)

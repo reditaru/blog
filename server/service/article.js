@@ -17,14 +17,14 @@ export const getArticles = async ()=>{
 }
 export const getArticlesByTagId = async(tagId)=>{
     let tag = await db.tag.findById(tagId,{
-        include:[{model:db.article,as:'articles',through:{attributes:[]},include:[{model:db.category,as:'category'},{model:db.user,as:'author'}], order: [['createdAt', 'DESC']]}]
+        include:[{model:db.article,as:'articles',through:{attributes:[]},include:[{model:db.category,as:'category'},{model:db.user,as:'author'},{model:db.tag,as:'tags',through:{attributes:[]}}], order: [['createdAt', 'DESC']]}]
     })
     Toolkit.assertNotNull(tag,'The request tag is not exist!')
     return tag;
 }
 export const getArticlesByCategory = async (categoryId)=>{
     let category = await db.category.findById(categoryId,{
-        include:[{model:db.article,as:'articles',include:[{model:db.tag,as:'tags',through:{attributes:[]}},{model:db.user,as:'author'}], order: [['createdAt', 'DESC']]}]
+        include:[{model:db.article,as:'articles',include:[{model:db.tag,as:'tags',through:{attributes:[]}},{model:db.user,as:'author'},{model:db.category,as:'category'}], order: [['createdAt', 'DESC']]}]
     })
     Toolkit.assertNotNull(category,'The request category is not exist!')
     return category.toJSON();
