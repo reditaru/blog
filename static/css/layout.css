@@ -69,3 +69,6 @@ body{
 .footer>span{
     display: block;
 }
+.error,.not-found{
+    margin-top: 5%;
+}

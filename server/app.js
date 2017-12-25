@@ -7,6 +7,8 @@ import serve from 'koa-static'
 import mount from 'koa-mount'
 import root from './controller/root'
 import logger from 'koa-logger'
+import * as Cache from './util/Cache'
+import * as configService from './service/config'
 import cors from '@koa/cors'
 
 const app = new Koa();
@@ -15,11 +17,8 @@ app.use(async (ctx, next) => {
         await next();
     } catch (err) {
         console.log(err)
-        ctx.body = {
-            success: false,
-            code:err.status,
-            message: err.message,
-        };
+        let config = await Cache.getCache('config',configService.getConfig)
+        await ctx.render('error',{err:err,config:config});
     }
 });
 app.use(logger())
