@@ -10,13 +10,30 @@ import configApi from './api/config'
 import * as Cache from '../util/Cache'
 import * as configService from '../service/config'
 let root = new Router ();
+let api = new Router();
+api.prefix('/api')
+api .use(async(ctx,next)=>{
+    try{
+        await next();
+    }catch (err){
+        console.log(err)
+        ctx.body = {
+            code:err.status||err.code,
+            success:false,
+            msg:err.message
+        }
+    }
+})
+    .use(articleApi.middleware())
+    .use(categoryApi.middleware())
+    .use(tagApi.middleware())
+    .use(configApi.middleware())
 root.use('',view.middleware())
-    .use('/api',articleApi.middleware())
-    .use('/api',categoryApi.middleware())
-    .use('/api',tagApi.middleware())
-    .use('/api',configApi.middleware())
     .get("*",async(ctx)=>{
         let config = await Cache.getCache('config',configService.getConfig)
         await ctx.render('404',{config:config});
     })
-export default root;
+export {
+    root,
+    api
+};

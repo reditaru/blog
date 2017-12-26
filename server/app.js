@@ -5,7 +5,7 @@ import Koa  from 'koa'
 import views from'koa-views'
 import serve from 'koa-static'
 import mount from 'koa-mount'
-import root from './controller/root'
+import {root,api} from './controller/root'
 import logger from 'koa-logger'
 import * as Cache from './util/Cache'
 import * as configService from './service/config'
@@ -27,5 +27,6 @@ app.use(views(__dirname+'/views',{
 }))
 app.use(mount('/static',serve('static/')))
 app.use(mount('/semantic',serve('semantic/')))
+app.use(api.middleware())
 app.use(root.middleware());
 app.listen(3000)
