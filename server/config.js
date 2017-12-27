@@ -31,6 +31,16 @@ let config = {
     },
     session:{
 
+    },
+    auth:{
+        type:'jwt',
+        secret:'test-secret',
+        path:[/^\/api\/login/,/^\/api\/logout/],
+        expiresIn:'1d'
+    },
+    admin:{
+        id:1,
+        username:'SteinsKurisu'
     }
 }
 export default config;

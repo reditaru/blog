@@ -10,7 +10,6 @@ import logger from 'koa-logger'
 import * as Cache from './util/Cache'
 import * as configService from './service/config'
 import cors from '@koa/cors'
-
 const app = new Koa();
 app.use(async (ctx, next) => {
     try {

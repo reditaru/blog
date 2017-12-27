@@ -30,7 +30,8 @@ if(config.env.current==='dev')
         Promise.all([db.user.create({username: 'SteinsKurisu',password:'admin',name:'SteinsKurisu',avatar: '/static/img/avatar.png',email:'example@example.com'}),
                     db.category.create({name: 'testCategory'}),
                     db.tag.create({name: 'testTag'}),
-                    db.tag.create({name:'testTag2'})]).
+                    db.tag.create({name:'testTag2'}),
+            db.user.create({username: 'SteinsKurisu2',password:'admin',name:'SteinsKurisu',avatar: '/static/img/avatar.png',email:'example@example.com'})]).
         then((data)=>{
             db.article.create({
                 title:'自己动手写一个神经网络(1)：BP神经网络',

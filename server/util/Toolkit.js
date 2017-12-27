@@ -3,13 +3,19 @@
  */
 import util from 'util'
 import ServerError from './ServerError'
-export function assertNotNull(obj,msg) {
+export function assertNotNull(obj,msg,status) {
     if(obj==null)
-        throw new ServerError(msg,ServerError.REQUEST_NULL_RESOURCE);
+        throw new ServerError(msg,status||ServerError.REQUEST_NULL_RESOURCE);
 }
-export function assertNull(obj,msg) {
+export function assertNull(obj,msg,status) {
+
     if(obj!=null)
-        throw new ServerError(msg,ServerError.OPRATION_ON_EXISTING_RESOURCE);
+        throw new ServerError(msg,status||ServerError.OPRATION_ON_EXISTING_RESOURCE);
+}
+//只支持basic type
+export function assertEqual(source,target,msg,status) {
+    if(source!==target)
+        throw new ServerError(msg,status||ServerError.OPRATION_ON_EXISTING_RESOURCE);
 }
 export function copyProperties(source,...ignoreProperties) {
     let result;

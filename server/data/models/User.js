@@ -12,7 +12,10 @@ export default function(sequelize,DataTypes){
             primaryKey: true,
             autoIncrement: true,
         },
-        username:DataTypes.STRING,
+        username:{
+            type:DataTypes.STRING,
+            unique: true
+        },
         password:DataTypes.STRING,
         name:DataTypes.STRING,
         avatar:DataTypes.STRING,
