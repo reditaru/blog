@@ -21,6 +21,7 @@ app.use(async (ctx, next) => {
     }
 });
 app.use(logger())
+app.use(cors())
 app.use(views(__dirname+'/views',{
     extension:'jade'
 }))

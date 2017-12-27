@@ -18,7 +18,7 @@ auth.post('/login',{validate:authValiate},async(ctx)=>{
         ctx.body = Toolkit.assemblyResponseBody(data);
     })
     .post('/logout',{validate:{body:{id:Joi.number().required()},type:'json'}},async(ctx)=>{
-        let data = await authService.logout(ctx.body.id);
+        let data = await authService.logout(ctx.request.body.id);
         ctx.body = Toolkit.assemblyResponseBody(data);
     })
 

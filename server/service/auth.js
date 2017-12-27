@@ -17,6 +17,8 @@ export async function login(username,password) {
     let info = Toolkit.copyProperties(user.toJSON(),'password');
     let token = jwt.sign({username:user.username,id:user.id},config.auth.secret,{expiresIn:config.auth.expiresIn})
     info.token = token;
+    if(user.id === config.admin.id)
+        info.type = 'admin'
     return info;
 }
 export async function logout(userId) {
