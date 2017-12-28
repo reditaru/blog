@@ -20,7 +20,7 @@ view.get('/',async(ctx)=>{
         await ctx.render('articles',{articles:data,config:config})
     })
     .get('/article/:id',async(ctx)=>{
-        let data = await articleService.getArticleById(ctx.params.id)
+        let data = await articleService.getArticleById(ctx.params.id,true)
         let config = await Cache.getCache('config',configService.getConfig)
         await ctx.render('article',{article:data,markdown:markdown,config:config})
     })

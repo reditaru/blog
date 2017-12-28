@@ -29,7 +29,7 @@ export const getArticlesByCategory = async (categoryId)=>{
     Toolkit.assertNotNull(category,'The request category is not exist!')
     return category.toJSON();
 }
-export const getArticleById = async (id)=>{
+export const getArticleById = async (id,flag)=>{
     let article =  await db.article.scope('content').findById(id,{
         include:[{model:db.category,as:'category'},
             {model:db.tag,as:'tags',through:{attributes:[]}},
@@ -37,9 +37,10 @@ export const getArticleById = async (id)=>{
         ]
     })
     Toolkit.assertNotNull(article,'The request article is not exist!')
-    article.updateAttributes({
-        readCount:article.readCount+1
-    });
+    if(flag)
+        article.updateAttributes({
+            readCount:article.readCount+1
+        });
     return article.toJSON();
 }
 export const createArticle = async (info)=>{
