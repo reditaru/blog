@@ -25,6 +25,7 @@ Object.keys(db).forEach(function(modelName) {
 });
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+//初始测试数据
 if(config.env.current==='dev')
     sequelize.sync({force:true}).then(()=> {
         Promise.all([db.user.create({username: 'SteinsKurisu',password:'admin',name:'SteinsKurisu',avatar: '/static/img/avatar.png',email:'example@example.com'}),
@@ -53,6 +54,5 @@ if(config.env.current==='dev')
             header:'Steins Kurisu',
             subHeader:'BAD STUDENT IN NJU, MAJOR IN SOFTWARE ENGINEER'
         })
-
     })
 export default db;
