@@ -9,6 +9,16 @@ import * as configService from '../../service/config'
 import * as Cache from '../../util/Cache'
 import markdown from 'marked'
 let view = new Router ();
+markdown.setOptions({
+    renderer: new markdown.Renderer({
+        plugins: {
+            test(params,block){
+                return `<h1>${block}</h1>`
+            }
+        },
+    }),
+    plugins:true
+});
 view.get('/',async(ctx)=>{
         let data = await articleService.getArticles()
         let config = await Cache.getCache('config',configService.getConfig)

@@ -4,7 +4,7 @@
 
 let config = {
     env:{
-      current:'prod'
+      current:'dev'
     },
     database:{
         name:'sqlite:blog',
