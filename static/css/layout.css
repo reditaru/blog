@@ -1,5 +1,5 @@
 body{
-    background: url("http://pic.reditaru.com/blog/config/background.jpg") no-repeat;
+    background: url("https://pic.reditaru.com/blog/config/background.jpg") no-repeat;
     background-size: cover;
 }
 .ui.grid {
@@ -14,7 +14,6 @@ body{
 }
 @media screen and (min-width: 768px){
     .content{
-        white-space: nowrap;
         overflow: scroll;
         overflow-x: hidden;
     }
