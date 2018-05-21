@@ -1,17 +1,17 @@
 /**
- * Created by Administrator on 2017/12/21.
+ * Created by reditaru on 2017/12/21.
  */
 
 let config = {
     env:{
-      current:'dev'
+      current: 'dev'
     },
-    database:{
-        name:'sqlite:blog',
-        username:null,
-        password:null,
-        dialect:'sqlite',
-        storage:'./blog.db',
+    database: {
+        name: 'sqlite:blog',
+        username: null,
+        password: null,
+        dialect: 'sqlite',
+        storage: './blog.db',
         pool: {
             max: 10,
             min: 0,
@@ -19,7 +19,7 @@ let config = {
             idle: 10000
         }
     },
-    cors:{
+    cors: {
         origin: function(ctx) {
             return 'http://localhost:8080';
         },
@@ -29,17 +29,19 @@ let config = {
         allowMethods: ['GET', 'POST','PUT','DELETE'],
         allowHeaders: ['Content-Type', 'Authorization', 'Accept', 'Cache-Control', 'X-Requested-With']
     },
-    session:{
+    session: {
 
     },
-    auth:{
+    auth: {
         type:'jwt',
         secret:'test-secret',
         path:[/^\/api\/login/,/^\/api\/logout/],
         expiresIn:'1d'
     },
-    admin:{
+    admin: {
+        // set admin for blog dashboard to use some api
         id:1,
+        // admin name
         username:'SteinsKurisu'
     }
 }

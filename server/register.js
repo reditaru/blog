@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2017/12/21.
+ * Created by reditaru on 2017/12/21.
  */
-require("babel-core/register")
-require("./app")
+require("babel-core/register");
+require("./app");

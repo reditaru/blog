@@ -8,16 +8,16 @@ import config from '../config'
 export async function login(username,password) {
     const AUTH_FAIL_MSG = 'Authentication Fail!';
     let user = await db.user.scope('valid').findOne({
-        where:{
-            username:username,
+        where: {
+            username
         }
     });
-    Toolkit.assertNotNull(user,AUTH_FAIL_MSG);
-    Toolkit.assertEqual(password,user.password,AUTH_FAIL_MSG);
-    let info = Toolkit.copyProperties(user.toJSON(),'password');
-    let token = jwt.sign({username:user.username,id:user.id},config.auth.secret,{expiresIn:config.auth.expiresIn})
+    Toolkit.assertNotNull(user, AUTH_FAIL_MSG);
+    Toolkit.assertEqual(password, user.password,AUTH_FAIL_MSG);
+    let info = Toolkit.copyProperties(user.toJSON(), 'password');
+    let token = jwt.sign({ username: user.username, id: user.id }, config.auth.secret, { expiresIn: config.auth.expiresIn });
     info.token = token;
-    if(user.id === config.admin.id)
+    if (user.id === config.admin.id)
         info.type = 'admin'
     return info;
 }
