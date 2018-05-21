@@ -10,8 +10,8 @@ import * as Cache from '../../util/Cache'
 import markdown from 'marked'
 import highlight from 'highlight.js'
 markdown.setOptions({
-    highlight: function (code) {
-        return highlight.highlightAuto(code).value;
+    highlight: function (code, lang) {
+        return `<pre><code class="hljs ${lang}">${lang == null? highlight.highlightAuto(code).value : highlight.highlight(lang, code).value}</code></pre>`;
     }
 });
 let view = new Router ();
