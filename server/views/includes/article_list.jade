@@ -11,4 +11,4 @@ mixin article_list(articles)
                 p.description= article.summary
                 span.info=  article.createdAt.toDateString() + " 于 "
                 a(href="/category/" + article.category.id)=article.category.name
-                span.info= "|  "+article.readCount + "  Click,  "+article.commentCount + "  Comment."
+                span.info= "|  "+article.readCount + "  Click."
