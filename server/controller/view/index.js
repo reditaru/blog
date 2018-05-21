@@ -8,6 +8,12 @@ import * as categoryService from '../../service/category'
 import * as configService from '../../service/config'
 import * as Cache from '../../util/Cache'
 import markdown from 'marked'
+import highlight from 'highlight.js'
+markdown.setOptions({
+    highlight: function (code) {
+        return highlight.highlightAuto(code).value;
+    }
+});
 let view = new Router ();
 view.get('/', async (ctx) => {
     let data = await articleService.getArticles();
@@ -21,8 +27,8 @@ view.get('/', async (ctx) => {
 })
 .get('/article/:id', async (ctx) => {
     let data = await articleService.getArticleById(ctx.params.id,true);
-    let config = await Cache.getCache('config',configService.getConfig);
-    await ctx.render('article',{article:data,markdown:markdown,config:config});
+    let config = await Cache.getCache('config', configService.getConfig);
+    await ctx.render('article', { article:data, markdown: markdown, config: config });
 })
 .get('/tag/:id', async (ctx) => {
     let data = await articleService.getArticlesByTagId(ctx.params.id);
