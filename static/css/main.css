@@ -16,3 +16,41 @@
 .article {
     margin-top: 5%;
 }
+.chat_room {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+.chat_icon {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+.chat_block {
+    position: absolute;
+    right: 0px;
+    bottom: 50px;
+}
+.online_status {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: lightgreen;
+    margin-right: .3em;
+}
+.chat_header, .chat_footer, .msg .content {
+    overflow: hidden;
+}
+.chat_main {
+    height: 250px;
+    overflow-y: auto;
+}
+.msg.right.floated .summary::after {
+    display: block;
+    content: '';
+    clear: both;
+}
+.ui.feed>.event.msg {
+    width: 75%;
+}

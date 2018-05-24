@@ -11,6 +11,7 @@ import path from 'path'
 import * as Cache from './util/Cache'
 import * as configService from './service/config'
 import cors from '@koa/cors'
+import startChatService from './service/chat'
 const app = new Koa();
 app.use(async (ctx, next) => {
     try {
@@ -31,4 +32,4 @@ app.use(mount('/static', serve('static/')));
 app.use(mount('/semantic', serve('semantic/')));
 app.use(api.middleware());
 app.use(root.middleware());
-app.listen(3000);
+startChatService(app.listen(3000));

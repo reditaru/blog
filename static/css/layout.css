@@ -79,6 +79,6 @@ pre code {
 .footer>span{
     display: block;
 }
-.error,.not-found{
+.error, .not-found{
     margin-top: 5%;
 }

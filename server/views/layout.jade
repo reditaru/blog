@@ -97,8 +97,29 @@ html
                             a(href="https://github.com/koajs/koa")  Koa
                             span And
                                 a(href="https://semantic-ui.com/")  Semantic UI
+        div.chat_room
+            div.chat_icon
+                i.large.circular.teal.link.comment.alternate.icon
+                div.floating.circular.ui.red.label.not_read_count
+            div.chat_block.ui.card
+                div.content.chat_header
+                    | Welcome, 
+                    span.chat_name 
+                    | !
+                    div.right.floated.meta
+                        div.online_status
+                        span.online_people 
+                div.content.ui.feed.chat_main
+                div.extra.content.chat_footer
+                    div.ui.large.transparent.left.icon.input
+                        i.smile.outline.icon
+                        input(id="msgInput" type="text" placeholder="Write something...")
         script(src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js")
         script(src="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.js")
         script(src="https://cdn.bootcss.com/pace/1.0.2/pace.min.js")
+        script(src="https://cdn.bootcss.com/socket.io/2.1.0/socket.io.js")
+        script(src="https://cdn.bootcss.com/moment.js/2.22.1/moment.min.js")
+        script(src="https://cdn.bootcss.com/moment.js/2.22.1/locale/zh-cn.js")
+        script(src="https://cdn.bootcss.com/js-xss/0.3.3/xss.min.js")
         script(src="../../static/js/main.js")
         block script
