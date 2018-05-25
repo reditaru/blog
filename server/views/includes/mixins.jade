@@ -11,6 +11,7 @@ mixin article_list(articles)
                 p.description= article.summary
                 span.info=  article.createdAt.toDateString() + " 于 "
                 a(href="/category/" + article.category.id)=article.category.name
-                span.info= "|  "+article.readCount + "  Click."
+                span.info= "|  "+article.readCount + "  Click "
+                span.info.disqus-comment-count(data-disqus-identifier=article.id)
 
         

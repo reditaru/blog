@@ -8,7 +8,8 @@ block content
         div.extra
             span.info=  article.createdAt.toDateString() + " 于 "
             a(href="/category/" + article.category.id)=article.category.name
-            span.info= "|  "+article.readCount + "  Click."
+            span.info= "|  "+article.readCount + "  Click  "
+            span.info.disqus-comment-count(data-disqus-identifier=article.id)
         h1.ui.header= article.title
         div.ui.divider
         div.tags
@@ -19,3 +20,10 @@ block content
                 a.ui.label(href="/tag/" + tag.id)= tag.name
         div.article-content
             != markdown(article.content)
+    div#disqus_thread
+    noscript Please enable JavaScript to view the 
+        a(href="https://disqus.com/?ref_noscript") comments powered by Disqus.
+
+block script
+    script= 'var disqus_config = function() { this.page.url=\'https://reditaru/com/article/' + article.id + '\'; this.page.identifier=\'' + article.id + '\'; }'
+    script(src="../../static/js/article.js")
