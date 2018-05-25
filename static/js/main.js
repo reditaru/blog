@@ -16,9 +16,16 @@
         chatBlock.toggle();
         chatBlock.animate({ scrollTop: chatBlock.prop('scrollHeight') }, 100);
         chatOpenStatus = !chatOpenStatus;
+        if (!chatOpenStatus) {
+            $('#emoji_box').hide();
+        }
         checkShowNotRead();
     });
     $('.not_read_count').hide();
+    $('#emoji_box').hide();
+    $('.emoji').click(function() {
+        $('#emoji_box').toggle();
+    });
     // template util
     function template(str, obj) {
         return str.replace(/\$\{([^\}]+)\}/g, (match, key) => (obj[key] || ''));;
@@ -30,6 +37,24 @@
             $('.not_read_count').hide();
         }
     }
+    function initEmoji() {
+        var emojiContent = $('#emoji_box .content');
+        var prefix = '\uD83D'.charCodeAt(0);
+        for (var i = 56833; i < 56911;i++)  {
+            var emoji = '';
+            emoji += String.fromCharCode(prefix);
+            emoji += String.fromCharCode(i);
+            var res = '<span>' + emoji + '</span>';
+            (function(emj) {
+                emojiContent.append($(res).click(function() {
+                    $('#msgInput').val($('#msgInput').val() + emj);
+                    $('#emoji_box').hide();
+                    $('#msgInput').focus();
+                }));
+            })(emoji);
+        }
+    }
+    initEmoji();
     // socket 
     Pace.options.ajax.trackWebSockets = false;
     // socket server address

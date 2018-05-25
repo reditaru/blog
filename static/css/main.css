@@ -21,6 +21,11 @@
     bottom: 50px;
     right: 50px;
 }
+@media screen and (max-width: 768px) {
+    .chat_room {
+        display: none;
+    }
+}
 .chat_icon {
     position: absolute;
     bottom: 0px;
@@ -46,6 +51,9 @@
     height: 250px;
     overflow-y: auto;
 }
+#msgInput, .chat_footer .transparent.input {
+    width: 100%;
+}
 .msg.right.floated .summary::after {
     display: block;
     content: '';
@@ -53,4 +61,15 @@
 }
 .ui.feed>.event.msg {
     width: 75%;
+}
+#emoji_box {
+    width: 60%;
+    position: absolute;
+    left: 0px;
+    bottom: 108px;
+    height: 130px;
+    overflow-y: auto;
+}
+#emoji_box .content span {
+    cursor: pointer;
 }
