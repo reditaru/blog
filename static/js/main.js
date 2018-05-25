@@ -57,6 +57,7 @@
     initEmoji();
     // socket 
     Pace.options.ajax.trackWebSockets = false;
+    Pace.options.ajax.ignoreURLs = ['socket.io'];
     // socket server address
     var socket = io('http://localhost:3000');
     var myName, sendStatus = {};
